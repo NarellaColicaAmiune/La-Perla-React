@@ -1,3 +1,30 @@
 .cart {
+    display: flex;
+    align-items: center;
     font-size: 20px;
+    color: black;
+    position: relative;
+}
+
+.cart p {
+    margin: 0 5px 0 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.cart svg {
+    font-size: 24px;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .navbar-links ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-links ul li {
+        margin: 5px 0;
+    }
 }

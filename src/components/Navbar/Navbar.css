@@ -15,7 +15,42 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #e9e0c9;
-    padding: 20px;
+    padding: 10px 20px;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(2, 100, 2);
+    text-decoration: none;
+}
+
+.navbar-logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar-links ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.navbar-links ul li {
+    margin: 0 0;
+}
+
+.navbar-links ul li a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar-links ul li a:hover {
+    color: #206830;
 }
 
 ul {
