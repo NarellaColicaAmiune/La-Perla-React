@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProducts, getProductsByCategory } from "../../data";
+import { getProducts, getProductsByCategory } from "../../config/data";
 import "./ItemListContainer.css";
+import { Link } from "react-router-dom";
 
 const ItemListContainer = ({ greeting }) => {
     const { categoryId } = useParams();
@@ -19,7 +20,7 @@ const ItemListContainer = ({ greeting }) => {
     }, [categoryId]);
 
     return (
-        <div>
+        <div className="contenedorProductos">
             {greeting && <h1>{greeting}</h1>}
             {loading ? (
                 <p>Cargando productos...</p>
@@ -27,10 +28,10 @@ const ItemListContainer = ({ greeting }) => {
                 <ul className="product-list">
                     {products.map((product) => (
                         <div className="product-item" key={product.id}>
-                        <img src={product.image} alt={product.title}/>
-                        <h2>{product.title}</h2>
+                        <img src={product.img} alt={product.name}/>
+                        <h2>{product.name}</h2>
                         <p>${product.price}</p>
-                        <a className="button-detalle" href={`/item/${product.id}`}>Ver detalle</a>
+                        <Link className="button-detalle" to={`/item/${product.id}`}>Ver detalle</Link>
                         </div>
                     ))}
                 </ul>

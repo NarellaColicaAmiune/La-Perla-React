@@ -1,12 +1,16 @@
 import './CartWidget.css'
-import { IoMdCart } from "react-icons/io";
+import { FaCartShopping } from "react-icons/fa6";
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 const CartWidget = () => {
+    const { getTotalProducts } = useContext(CartContext)
     return (
-        <div className="cart">
-            <p>0</p>
-            <IoMdCart/>
-        </div>
+        <Link to={"/cart"} className="cart">
+            <FaCartShopping />
+            {getTotalProducts() === 0 ? null : getTotalProducts()} 
+        </Link>
     )
 }
 

@@ -1,37 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../data";
-import "./ItemDetailContainer.css";
+import { getProductById } from "../../config/data";
 
 const ItemDetailContainer = () => {
-    const { itemId } = useParams();
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
+  const [product, setProduct] = useState(null);
+  const { itemId } = useParams();
 
-    useEffect(() => {
-        setLoading(true);
-        getProductById(itemId)
-            .then((data) => setProduct(data))
-            .catch((error) => console.error("Error al cargar producto:", error))
-            .finally(() => setLoading(false));
-    }, [itemId]);
+  useEffect(() => {
+    getProductById(itemId)
+      .then((res) => setProduct(res))
+      .catch((err) => console.error(err));
+  }, [itemId]);
 
-    return (
-        <div>
-            {loading ? (
-                <p>Cargando producto...</p>
-            ) : product ? (
-                <div className="product-detail">
-                    <h1>{product.title}</h1>
-                    <img src={product.image} alt={product.title} />
-                    <p>{product.description}</p>
-                    <p>Precio: ${product.price}</p>
-                </div>
-            ) : (
-                <p>Producto no encontrado</p>
-            )}
-        </div>
-    );
+  if (!product) return <p>Cargando producto...</p>; // Cambia según prefieras
+
+  return <ItemDetail products={product} />;
 };
 
 export default ItemDetailContainer;
